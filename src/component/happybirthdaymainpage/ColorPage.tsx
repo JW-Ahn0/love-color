@@ -27,7 +27,7 @@ const DotMatrix = ({ author, colorList }: DotMatrixProps) => {
         }
       }
     }
-  }, []);
+  }, [colorList]);
 
   return (
     <HappyBirthdayCardWrapper>
