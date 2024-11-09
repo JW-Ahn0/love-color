@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 interface DotMatrixProps {
   author: string;

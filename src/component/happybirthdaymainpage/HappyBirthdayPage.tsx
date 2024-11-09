@@ -5,9 +5,7 @@ import HappyBirthdayCard from "./HappyBirthdayCard";
 import { ref, onValue } from "firebase/database";
 import { database } from "../../firebase";
 import { CardData } from "../../types/happybirthdaypage/HappyBirthdayCardProps";
-import VideoPage from "./VideoPage";
 import LetterPage from "./LetterPage";
-import { useNavigate } from "react-router-dom";
 import ColorPage from "./ColorPage";
 const HappyBirthdayPage = () => {
   const [activeTab, setActiveTab] = useState(1);
