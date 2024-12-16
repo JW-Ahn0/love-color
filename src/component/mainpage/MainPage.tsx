@@ -55,15 +55,15 @@ const MainPage = ({ token }: Token) => {
           <ContentWrapper>
             <MainTitle dDay={dday} isMobile={isMobile} />
             <DdayCard dDay={dday} isMobile={isMobile} />
+            <div className="token-con">
+              <button onClick={copyToClipboard}>토큰 복사</button>
+            </div>
             <ButtonCard
               dDay={dday}
               password={password}
               setIsPasswordConfirm={setIsPasswordConfirm}
               setMusicPlaying={setMusicPlaying}
             />
-            <div className="token-con">
-              <button onClick={copyToClipboard}>토큰 복사</button>
-            </div>
           </ContentWrapper>
 
           <BottomImgSection isMobile={isMobile} />
@@ -92,6 +92,7 @@ const MainPageWrapper = styled.div<{ isPasswordConfirm: boolean }>`
       cursor: pointer;
       text-decoration: underline;
     }
+    padding-bottom: 1rem;
   }
 `;
 const ContentWrapper = styled.div`
