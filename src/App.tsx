@@ -12,8 +12,11 @@ function App() {
       console.log(token);
       setToken(token || "");
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  useEffect(() => {
+    console.log(token);
+  }, [token]);
   return (
     <main>
       <Router>
