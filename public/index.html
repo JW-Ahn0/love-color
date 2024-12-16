@@ -41,6 +41,25 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        // Register a service worker hosted at the root of the
+        // site using the default scope.
+        navigator.serviceWorker
+          .register("/firebase-messaging-sw.js")
+          .then((registration) => {
+            console.log(
+              "Service Worker가 scope에 등록되었습니다.:",
+              registration.scope
+            );
+          })
+          .catch(function (err) {
+            console.log("Service Worker 등록 실패:", err);
+          });
+      } else {
+        console.log("Service workers are not supported.");
+      }
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { child, get, getDatabase, ref } from "firebase/database";
 import { getStorage } from "firebase/storage";
+import { getMessaging } from "firebase/messaging";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -10,16 +11,15 @@ import { getStorage } from "firebase/storage";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBYXmj_6ayXGZEIYkxHqJ1hhjcd4JLmwDg",
-  authDomain: "love-to-color.firebaseapp.com",
-  databaseURL:
-    "https://love-to-color-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "love-to-color",
-  storageBucket: "love-to-color.firebasestorage.app",
-  messagingSenderId: "322789676043",
-  appId: "1:322789676043:web:123b7eed12aa22f74b230e",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_API_KEY,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
-
+console.log(firebaseConfig);
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
@@ -44,3 +44,4 @@ export const getCngrtMsg = async () => {
 };
 
 export const storage = getStorage(app);
+export const messaging = getMessaging(app);
