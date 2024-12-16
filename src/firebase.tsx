@@ -19,13 +19,13 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
 };
-console.log(firebaseConfig);
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 // Initialize Realtime Database and get a reference to the service
 export const database = getDatabase(app);
-console.log(database);
+
 export const getCngrtMsg = async () => {
   const dbRef = ref(database);
 

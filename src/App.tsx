@@ -21,7 +21,7 @@ function App() {
     <main>
       <Router>
         <Routes>
-          <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<MainPage token={token} />} />
           <Route path="/love" element={<HappyBirthdayPage />} />
         </Routes>
       </Router>

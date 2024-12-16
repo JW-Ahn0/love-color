@@ -9,7 +9,11 @@ import { useEffect, useState } from "react";
 import HappyBirthdayPage from "../happybirthdaymainpage/HappyBirthdayPage";
 import MusicPlayer from "./MusicPlayer";
 
-const MainPage = () => {
+interface Token {
+  token: string;
+}
+const MainPage = ({ token }: Token) => {
+  console.log("token : ", token);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
   const dday = "2023-09-08";
   const password = "5670";
@@ -29,6 +33,17 @@ const MainPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(token)
+      .then(() => {
+        alert("토큰이 클립보드에 복사되었습니다.");
+      })
+      .catch((err) => {
+        console.error("클립보드 복사 실패:", err);
+      });
+  };
   return (
     <MainPageWrapper isPasswordConfirm={isPasswordConfirm}>
       <MusicPlayer src="/Root.mp3" isPlaying={musicPlaying} />{" "}
@@ -46,7 +61,11 @@ const MainPage = () => {
               setIsPasswordConfirm={setIsPasswordConfirm}
               setMusicPlaying={setMusicPlaying}
             />
+            <div className="token-con">
+              <button onClick={copyToClipboard}>토큰 복사</button>
+            </div>
           </ContentWrapper>
+
           <BottomImgSection isMobile={isMobile} />
         </>
       )}
@@ -63,6 +82,17 @@ const MainPageWrapper = styled.div<{ isPasswordConfirm: boolean }>`
   background: #ff8fa0;
   overflow: ${({ isPasswordConfirm }) =>
     isPasswordConfirm ? "auto" : "hidden"};
+
+  .token-con {
+    display: flex;
+    justify-content: center;
+    button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 `;
 const ContentWrapper = styled.div`
   width: 100%;
